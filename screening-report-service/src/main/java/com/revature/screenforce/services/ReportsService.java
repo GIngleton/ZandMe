@@ -30,13 +30,19 @@ import com.revature.screenforce.feign.*;
 import com.revature.screenforce.models.ScreenerInfoModel;
 import com.revature.screenforce.models.FullReportModel;
 import com.revature.screenforce.util.Time;
+import com.revature.screenforce.feign.feignBucket;
 
 
-@EnableFeignClients(basePackageClasses=com.revature.screenforce.feign.feignBucket.class)
+//@EnableFeignClients(basePackageClasses=com.revature.screenforce.feign.feignBucket.class)
 @Service
 public class ReportsService {
-	
-	@Autowired feignBucket feignbucket;
+	private feignBucket feignBucket;
+
+
+	@Autowired
+	public ReportsService(feignBucket feignBucket){
+		this.feignBucket = feignBucket;
+	};
 //	@Autowired feignQuestion feignquestion;
 //	@Autowired feignQuestionScore feignquestionscore;
 //	@Autowired feignScheduledScreening feignscheduledscreening;
@@ -65,9 +71,9 @@ public class ReportsService {
 	
 	
 	public List<Bucket> testGetAllBuckets() {
-		List<Bucket> testbucket = feignbucket.getBucket();
+		List<Bucket> testbucket = feignBucket.getBucket();
 		System.out.println(testbucket);
-		return feignbucket.getBucket();
+		return feignBucket.getBucket();
 	}
 //	public List<String> getAllEmails(String email){
 //		List<Screener> screenerList = screenerRepository.findAllByEmailContainingIgnoreCase(email);

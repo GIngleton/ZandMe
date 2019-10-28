@@ -14,16 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.screenforce.services.ReportsService;
 import com.revature.screenforce.beans.Bucket;
+import com.revature.screenforce.client.ScreenforceFeignClient;
 
 @RestController
 @CrossOrigin
 public class ReportsController {
+	private ScreenforceFeignClient fc;
+	private ReportsService reportsService;
 
-	@Autowired ReportsService reportsService;
-	@GetMapping(value="/test", produces= MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Bucket> getAllBucket(){
-		return this.reportsService.testGetAllBuckets();
+	@Autowired
+	public void getFeignClient(ScreenforceFeignClient fc) {
+		this.fc = fc;
 	}
+
+	@Autowired
+	public ReportsController(ReportsService reportsService) {
+		this.reportsService = reportsService;
+	}
+//
+//	@Autowired ReportsService reportsService;
+//	@GetMapping(value="/report", produces= MediaType.APPLICATION_JSON_VALUE)
+//	public @ResponseBody List<Bucket> getAllBucket(){
+//		return this.reportsService.testGetAllBuckets();
+//	}
 
 //	@GetMapping(value="/email", produces= MediaType.APPLICATION_JSON_VALUE)
 //	public @ResponseBody List<String> getAllEmails(@RequestParam(value = "email") String email){
@@ -33,8 +46,8 @@ public class ReportsController {
 //
 //	@GetMapping(value = "/data", produces = MediaType.APPLICATION_JSON_VALUE)
 //	public String getReports(
-//			@RequestParam(name="weeks") 
-//			String weeks, 
+//			@RequestParam(name="weeks")
+//			String weeks,
 //			@RequestParam(name="email", required=false)
 //			String email) {
 //		return reportsService.getReport(email, weeks);

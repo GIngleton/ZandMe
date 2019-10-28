@@ -13,6 +13,7 @@ com\revature\screenforce\ScreeningReportServiceApplication.class
 com\revature\screenforce\feign\feignQuestionScore.class
 com\revature\screenforce\models\ScreenerInfoModel.class
 com\revature\screenforce\feign\feignScheduledScreening.class
+com\revature\screenforce\client\ScreenforceFeignClient.class
 com\revature\screenforce\beans\Question.class
 com\revature\screenforce\beans\ScheduledStatus.class
 com\revature\screenforce\beans\ViolationType.class
@@ -20,6 +21,7 @@ com\revature\screenforce\feign\feignQuestion.class
 com\revature\screenforce\models\FullReportModel.class
 com\revature\screenforce\beans\ScheduledScreening.class
 com\revature\screenforce\feign\feignViolationType.class
+com\revature\screenforce\feign\feignCandidate.class
 com\revature\screenforce\beans\Weight.class
 com\revature\screenforce\feign\feignBucket.class
 com\revature\screenforce\controllers\ReportsController.class
